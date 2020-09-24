@@ -1,0 +1,68 @@
+{
+    "product": {
+      "types": {
+        "cloth": {
+          "id": 1,
+          "name": "Cloth"
+        },
+        "accessory": {
+          "id": 2,
+          "name": "Accessories"
+        }
+      }
+    },
+    "article": {
+      "types": {
+        "blog": {
+          "id": 1,
+          "name": "Blog"
+        },
+        "review": {
+          "id": 2,
+          "name": "Review"
+        },
+        "list": {
+          "id": 3,
+          "name": "List"
+        }
+      },
+      "featured": {
+        "home": {
+          "id": 1,
+          "name": "Home"
+        },
+        "main": {
+          "id": 2,
+          "name": "Main"
+        },
+        "primary": {
+          "id": 3,
+          "name": "Primary"
+        },
+        "secondary": {
+          "id": 4,
+          "name": "Secondary"
+        },
+        "non": {
+          "id": 5,
+          "name": "Non"
+        }
+      }
+    },
+    "user": {
+      "roles": {
+        "admin": "ADMIN",
+        "user": "USER"
+      },
+      "gender": {
+        "male": {
+          "id": 1,
+          "name": "Male"
+        },
+        "female": {
+          "id": 2,
+          "name": "Female"
+        }
+      }
+    }
+  }
