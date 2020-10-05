@@ -1,4 +1,4 @@
-const index = (APP_URL, NODE_ENV, appHtml='', styles='') => (
+const index = (APP_URL, NODE_ENV, appHtml='', styles='', initialState={}) => (
     `<!doctype html>
     <html lang="en">
     <head>
@@ -40,6 +40,10 @@ const index = (APP_URL, NODE_ENV, appHtml='', styles='') => (
     <body>
         <!-- App -->
         <main id="app">${ appHtml }</main>
+
+        <script>
+          window.__INITIAL_STATE__ = ${ JSON.stringify(initialState)}
+        </script>
         
         <!-- JS Bundle -->
         <script type="text/javascript" src="${ APP_URL }/js/bundles/vendor.js"></script>

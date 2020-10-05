@@ -3,7 +3,7 @@ import About from "../../modules/pages/About";
 import Team from "../../modules/pages/Team";
 import Advertise from "../../modules/pages/Advertise";
 import Product from "../../modules/pages/Product";
-import Blog from "../../modules/pages/Blog";
+import Blogs from "../../modules/pages/Blogs";
 
 export default {
     home: {
@@ -27,8 +27,8 @@ export default {
         path: '/product',
         component: Product
     },
-    blog: {
-        path: '/blog',
-        component: Blog
+    blogs: {
+        path: '/blogs',
+        component: Blogs
     }
 }

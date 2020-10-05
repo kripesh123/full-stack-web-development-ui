@@ -28,7 +28,7 @@ function Header(props) {
                         <MenuItem to={home.team.path}> Team</MenuItem>
                         <MenuItem to={home.advertise.path}> Advertise</MenuItem>
                         <MenuItem to={home.product.path}> Product</MenuItem>
-                        <MenuItem to={home.blog.path}> Blog</MenuItem>
+                        <MenuItem to={home.blogs.path}> Blog</MenuItem>
                     </Menu>
                 </GridCell>
             </Grid>
