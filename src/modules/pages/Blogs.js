@@ -7,6 +7,8 @@ import { grey, grey2 } from '../../ui/common/colors'
 import { GridCell, Grid } from '../../ui/grid'
 import { H3 } from '../../ui/typography'
 import BlogItem from '../../modules/blog/Item'
+import Loading from '../common/Loading'
+import EmptyMessage from '../common/EmptyMessage'
 
 class Blogs extends PureComponent {
 
@@ -34,11 +36,16 @@ class Blogs extends PureComponent {
 
                 <Grid>
                     {
-                        isLoading ? null : list.map(blog => (
-                            <GridCell key={blog.id} style={{textAlign: 'center' }}>
-                                <BlogItem blog={blog}/>
-                            </GridCell>
-                        ))
+                        isLoading
+                            ? <Loading />
+                            : list && list.length > 0
+                                ? list.map(blog => (
+                                    <GridCell key={blog.id} style={{ textAlign: 'center' }}>
+                                        <BlogItem blog={blog} />
+                                    </GridCell>
+
+                                ))
+                                : <EmptyMessage message="No Blogs To Show"/>
                     }
                 </Grid>
             </div>

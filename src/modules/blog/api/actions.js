@@ -54,8 +54,8 @@ export function get(slug, isLoading = true) {
                 if(response.data.errors && response.data.errors.length > 0){
                     dispatch({
                         type: BLOGS_GET_FAILURE,
-                        isLoading: false,
-                        error: response.data.errors[0].message
+                        error: response.data.errors[0].message,
+                        isLoading: false
                     })
                 } else {
                     dispatch({

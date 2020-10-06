@@ -47,10 +47,11 @@ export const blog = (state = blogInitialState, action) => {
         case BLOGS_GET_RESPONSE:
             return {
                 ...state,
+                error: action.error,
                 isLoading: action.isLoading,
                 item: action.item
             }
-        case BLOGS_GET_LIST_FAILURE:
+        case BLOGS_GET_FAILURE:
             return {
                 ...state,
                 isLoading: action.isLoading,

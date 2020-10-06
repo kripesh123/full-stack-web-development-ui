@@ -9,6 +9,7 @@ import { routeImage, routes } from "../../setup/routes"
 import { connect } from "react-redux"
 import { withRouter, Redirect } from "react-router-dom"
 import { H3, H2, H4 } from "../../ui/typography"
+import Loading from "../common/Loading"
 
 class Detail extends PureComponent {
 
@@ -21,7 +22,7 @@ class Detail extends PureComponent {
     }
 
     componentDidUpdate(prevProps) {
-        if(prevProps.match.params.slug !== this.props.match.params.slug) {
+        if (prevProps.match.params.slug !== this.props.match.params.slug) {
             this.refresh(this.props.match.params.slug)
         }
     }
@@ -38,37 +39,45 @@ class Detail extends PureComponent {
                 {
                     !error
                         ? isLoading
-                            ? null
-                            :renderIf(item && item.id, () => (
-                        <div>
-                            <Grid style={{ backgroundColor: grey }}>
-                                <GridCell style={{ padding: '2em', textAlign: 'center' }}>
-                                    <H3 font="secondary"> Blog </H3>
-                                </GridCell>
-                            </Grid>
+                            ? <Loading />
+                            : renderIf(item && item.id, () => (
+                                <div>
+                                    <Grid style={{ backgroundColor: grey }}>
+                                        <GridCell style={{ padding: '2em', textAlign: 'center' }}>
+                                            <H3 font="secondary"> Blog </H3>
+                                        </GridCell>
+                                    </Grid>
 
-                            <Grid gutter={true} alignCenter={true} style={{ padding: '2em'}}> 
-                                <GridCell style={{ maxWidth: '35em'}}>
-                                    <Card>
-                                        <img src={routeImage + item.image} alt={item.title} style={{width: '100%'}}/>
-                                    </Card>
-                                </GridCell>
+                                    <Grid gutter={true} alignCenter={true} style={{ padding: '2em' }}>
+                                        <GridCell style={{ maxWidth: '35em' }}>
+                                            <Card>
+                                                <img src={routeImage + item.image} alt={item.title} style={{ width: '100%' }} />
+                                            </Card>
+                                        </GridCell>
 
-                                <GridCell style={{ textAlign: 'center'}}>
-                                    <H2 font="secondary">
-                                        {item.title}
-                                    </H2>
-                                    <H4 style={{ marginTop: '1em'}}>
-                                        {item.description}
-                                    </H4>
-                                    <p style={{ marginTop:'0.5em', color: grey2}}>
-                                        Launch on {new Date(parseInt(item.createdAt)).toDateString()}
-                                    </p>
-                                </GridCell>
-                            </Grid>
-                        </div>
-                    ))
-                : <Redirect to={routes.home.path} />
+                                        <GridCell style={{ textAlign: 'center' }}>
+                                            <H2 font="secondary">
+                                                {item.title}
+                                            </H2>
+                                            <H4 style={{ marginTop: '1em' }}>
+                                                {item.description}
+                                            </H4>
+                                            <p style={{ marginTop: '0.5em', color: grey2 }}>
+                                                Launch on {new Date(parseInt(item.createdAt)).toDateString()}
+                                            </p>
+                                        </GridCell>
+                                    </Grid>
+
+                                    <Grid gutter={true} alignCenter={true} style={{ padding: '2em' }}>
+                                        <GridCell style={{ textAlign: 'center' }}>
+                                            <H3 style={{ marginTop: '0.5em', color: grey2 }}>
+                                                {item.body}
+                                            </H3>
+                                        </GridCell>
+                                    </Grid>
+                                </div>
+                            ))
+                        : <Redirect to={routes.home.path} />
                 }
             </div>
         )
