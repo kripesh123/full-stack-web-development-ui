@@ -6,6 +6,7 @@ import Logo from './Logo'
 import Menu from './Menu'
 import MenuItem from './MenuItem'
 import home from '../../../setup/routes/home'
+import user from '../../../setup/routes/user'
 
 function Header(props) {
     return (
@@ -22,13 +23,22 @@ function Header(props) {
 
             <Grid>
                 <GridCell>
-                    <Logo style={{ marginTop: '0.5em', float: 'left'}}/>
-                    <Menu style={{ marginTop: '1em', marginLeft: '1em', float: 'left'}}>
+                    <Logo style={{ marginTop: '0.5em', float: 'left' }} />
+                    <Menu style={{ marginTop: '1em', marginLeft: '1em', float: 'left' }}>
                         <MenuItem to={home.about.path}> About</MenuItem>
                         <MenuItem to={home.team.path}> Team</MenuItem>
                         <MenuItem to={home.advertise.path}> Advertise</MenuItem>
                         <MenuItem to={home.product.path}> Product</MenuItem>
                         <MenuItem to={home.blogs.path}> Blog</MenuItem>
+                    </Menu>
+                </GridCell>
+            </Grid>
+
+            <Grid>
+                <GridCell>
+                    <Menu style={{ float: 'right' }}>
+                        {/* <MenuItem to={user.login.path}> Login</MenuItem> */}
+                        <MenuItem to={user.signup.path}> Signup</MenuItem>
                     </Menu>
                 </GridCell>
             </Grid>

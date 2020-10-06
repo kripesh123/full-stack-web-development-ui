@@ -1,8 +1,9 @@
 import home from "./home";
 import { APP_IMAGE_API, APP_URL_API} from "../config/env";
 import blog from "./blog";
+import user from "./user";
 
-export const routes = Object.assign(home, blog)
+export const routes = Object.assign(home, blog, user)
 
 export const routeApi = APP_URL_API
 
