@@ -11,6 +11,7 @@ import { createStore, applyMiddleware } from 'redux'
 import { rootReducer } from '../store'
 import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
+import { setUser } from '../../modules/user/api/actions'
 
 export default function (app) {
     console.log('SETUP- LOAD routes......')
@@ -21,6 +22,14 @@ export default function (app) {
     )
 
     app.get('*', (request, response) => {
+
+        if(request.cookies.auth) {
+            const auth = JSON.parse(request.cookies.auth)
+            if( auth && auth.token !== '' && auth.user) {
+                store.dispatch(setUser(auth.token, auth.user))
+            }
+        }
+
         let status = 200
 
         const matches = Object.values(routes).reduce((matches, route) => {

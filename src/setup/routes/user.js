@@ -3,12 +3,12 @@ import Signup from "../../modules/user/Signup";
 
 export default {
     login: {
-        path: 'user/login',
+        path: '/user/login',
         component: Login
     },
 
     signup: {
-        path: 'user/singup',
+        path: '/user/signup',
         component: Signup
     }
 }

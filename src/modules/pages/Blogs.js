@@ -53,7 +53,7 @@ class Blogs extends PureComponent {
     }
 }
 
-Blogs.prototypes = {
+Blogs.propTypes = {
     blogs: PropTypes.object.isRequired,
     getBlogList: PropTypes.func.isRequired
 }

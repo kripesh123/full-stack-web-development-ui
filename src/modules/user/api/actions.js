@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { query } from "simple-graphql-query-builder"
+import { query, mutation } from "simple-graphql-query-builder"
 import { routeApi } from '../../../setup/routes'
 import cookie from 'js-cookie'
 
@@ -10,7 +10,7 @@ export const LOGOUT = 'LOGOUT'
 
 export function register(userDetails) {
     return dispatch => {
-        return axios.post(routeApi, query({
+        return axios.post(routeApi, mutation({
             operation: 'userSignup',
             variables: userDetails,
             fields: ['id', 'name', 'email']
