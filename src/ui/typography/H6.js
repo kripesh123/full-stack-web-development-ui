@@ -1,28 +1,35 @@
+// Imports
 import React from 'react'
 import PropTypes from 'prop-types'
 
+// UI Imports
 import { primary, secondary } from '../common/fonts'
+
+// Component
 const H6 = (props) => {
-    const { children, font, ...others} = props
+  const { children, font, ...others } = props
 
-    return (
-        <h6 {...others}>
-            {children}
+  return (
+    <h6 {...others}>
+      {children}
 
-        <style jsx>{`
-            h6 {
-                font-family: ${font === 'primary' ? primary : secondary};
-                font-size: 1.25em;
-            }
-        `}</style>
-        </h6>
-    )
+      {/* language=CSS */}
+      <style jsx>{`
+        h6 {
+          font-family: ${ font === 'primary' ? primary : secondary };
+          font-size: 1.25em;
+        }
+      `}</style>
+    </h6>
+  )
 }
+
+// Component Properties
 H6.propTypes = {
-    font: PropTypes.string
+  font: PropTypes.string
+}
+H6.defaultProps = {
+  font: 'primary'
 }
 
-H6.defaultProps = {
-    font: 'primary'
-}
 export default H6

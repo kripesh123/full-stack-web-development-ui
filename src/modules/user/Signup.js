@@ -115,7 +115,7 @@ class Signup extends Component {
                         </div>
 
                         <div style={{marginTop: '2em'}}>
-                            <Button type="submit" theme="secodary" disabled={this.state.isLoading}>
+                            <Button type="submit" theme="secondary" disabled={this.state.isLoading}>
                                 Signup
                                 <Icon size={1.2} style={{color: white}}>navigate_next</Icon>
                             </Button>

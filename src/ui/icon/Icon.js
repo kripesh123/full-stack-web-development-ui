@@ -1,30 +1,33 @@
+// Imports
 import React from 'react'
 import PropTypes from 'prop-types'
 
+// Component
 const Icon = (props) => {
-    const { children, size, ...others} = props
+  const { children, size, ...other } = props
 
-    return (
-        <i className="material-icons" {...others}>
-            {children}
+  return (
+    <i className="material-icons" {...other}>
+      {children}
 
-    <style jsx>{`
+      {/* language=CSS */}
+      <style jsx>{`
         i {
-            font-size: ${size}em;
-            line-height: inherit;
-            vertical-align: middle
+          font-size: ${ size }em;
+          line-height: inherit;
+          vertical-align: middle;
         }
-    `}</style>
-        </i>
-    )
+      `}</style>
+    </i>
+  )
 }
 
-Icon.propTypes ={
-    size: PropTypes.number
+// Component Properties
+Icon.propTypes = {
+  size: PropTypes.number
 }
-
-Icon.defaultProps ={
-    size: 1
+Icon.defaultProps = {
+  size: 1
 }
 
 export default Icon

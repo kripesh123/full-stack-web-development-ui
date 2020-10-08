@@ -1,22 +1,28 @@
+// Imports
 import React from 'react'
+
+// UI Imports
 import { level1 } from '../common/shadows'
 
+// Component
 const Card = (props) => {
-    const { children, ...others} = props
+  const { children, ...other } = props
 
-    return(
-        <div {...others}>
-            {children}
+  return (
+    <div {...other}>
+      {children}
 
-    <style jsx>{`
+      {/* language=CSS */}
+      <style jsx>{`
         div {
-            border-radius: 0.2em;
-            font-family: 'Roboto', sans-serif;
-            box-shadow: ${ level1 }
+          border-radius: 0.2em;
+          font-family: 'Roboto', sans-serif;
+          box-shadow: ${ level1 };
         }
-    `}</style>
-        </div>
-    )
+        `}
+      </style>
+    </div>
+  )
 }
 
 export default Card
