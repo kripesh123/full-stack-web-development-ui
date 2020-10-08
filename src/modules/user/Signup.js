@@ -10,8 +10,10 @@ import Button from '../../ui/button'
 import Icon from '../../ui/icon'
 import { white } from '../../ui/common/colors'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import { register } from './api/actions'
+import { messageShow, messageHide } from '../common/api/actions'
+import userRoutes from '../../setup/routes/user'
 
 class Signup extends Component {
     constructor(props) {
@@ -43,12 +45,33 @@ class Signup extends Component {
             isLoading: true
         })
 
+        this.props.messageShow('Signing you up, please wait......')
+
         this.props.register(this.state.user)
             .then(response => {
+                this.setState({
+                    isLoading: false
+                })
 
+                if (response.data.errors && response.data.errors.length > 0) {
+                    this.props.messageShow(response.data.errors[0].message)
+                } else {
+                    this.props.messageShow('Signed up successfully.')
+                    this.props.history.push(userRoutes.login.path)
+                }
             })
             .catch(error => {
+                this.props.messageShow('There was some error signing you up. Please try again.')
 
+                this.setState({
+                    isLoading: false,
+                    error: 'Error Signing Up.'
+                })
+            }).
+            then(() => {
+                window.setTimeout(() => {
+                    this.props.messageHide()
+                }, 5000)
             })
     }
 
@@ -69,7 +92,7 @@ class Signup extends Component {
                             </Grid>
                             <Grid>
                                 <GridCell justifyCenter={true}>
-                                    <ImageTile width={170} height={250} shadow={level1} style={{ marginTop: '1.9em' }} image={`${APP_URL}/images/stock/about-us/2.jpg`} />
+                                    <ImageTile width={170} height={250} shadow={level1} style={{ marginTop: '1.9em' }} image={`${APP_URL}/images/stock/about-us/3.jpg`} />
                                 </GridCell>
                             </Grid>
                         </GridCell>
@@ -99,7 +122,7 @@ class Signup extends Component {
                                 required="required"
                                 name="email"
                                 value={this.state.user.email}
-                                style={{ marginTop: '1em'}}
+                                style={{ marginTop: '1em' }}
                                 onChange={this.onChange}
                             />
                             <Input
@@ -109,15 +132,21 @@ class Signup extends Component {
                                 required="required"
                                 name="password"
                                 value={this.state.user.password}
-                                style={{ marginTop: '1em'}}
+                                style={{ marginTop: '1em' }}
                                 onChange={this.onChange}
                             />
                         </div>
 
-                        <div style={{marginTop: '2em'}}>
+                        <div style={{ marginTop: '2em' }}>
+                            <Link to={userRoutes.login.path}>
+                                <Button type="button" style={{ marginTop: '0.5em' }}>
+                                   Login
+                                <Icon size={1.2} style={{ color: white }}>navigate_next</Icon>
+                                </Button>
+                            </Link>
                             <Button type="submit" theme="secondary" disabled={this.state.isLoading}>
                                 Signup
-                                <Icon size={1.2} style={{color: white}}>navigate_next</Icon>
+                                <Icon size={1.2} style={{ color: white }}>navigate_next</Icon>
                             </Button>
                         </div>
                     </form>
@@ -128,7 +157,10 @@ class Signup extends Component {
 }
 
 Signup.propTypes = {
-    register: PropTypes.func.isRequired
+    register: PropTypes.func.isRequired,
+    messageShow: PropTypes.func.isRequired,
+    messageHide: PropTypes.func.isRequired,
+
 }
 
-export default connect(null, { register })(withRouter(Signup))
+export default connect(null, { register, messageHide, messageShow })(withRouter(Signup))

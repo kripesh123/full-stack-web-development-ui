@@ -1,9 +1,13 @@
 import { combineReducers, createStore, compose, applyMiddleware } from "redux";
 
 import * as blog from '../modules/blog/api/state'
+import common from '../modules/common/api/state'
+import user from '../modules/user/api/state'
 import thunk from "redux-thunk";
 
 const appReducer = combineReducers({
+    common,
+    user,
     ...blog
 })
 

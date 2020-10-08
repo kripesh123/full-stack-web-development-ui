@@ -37,7 +37,7 @@ function Header(props) {
             <Grid>
                 <GridCell>
                     <Menu style={{ float: 'right' }}>
-                        {/* <MenuItem to={user.login.path}> Login</MenuItem> */}
+                        <MenuItem to={user.login.path}> Login</MenuItem>
                         <MenuItem to={user.signup.path}> Signup</MenuItem>
                     </Menu>
                 </GridCell>
