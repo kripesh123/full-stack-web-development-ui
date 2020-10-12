@@ -15,6 +15,7 @@ import { register } from './api/actions'
 import { messageShow, messageHide } from '../common/api/actions'
 import { login } from './api/actions'
 import userRoutes from '../../setup/routes/user'
+import AuthCheck from '../auth/AuthCheck'
 
 class Login extends Component {
     constructor(props) {
@@ -56,7 +57,7 @@ class Login extends Component {
                 this.props.messageShow(this.props.user.error)
                 window.setTimeout(() => {
                     this.props.messageHide()
-                }, 5000)   
+                }, 5000)
             })
     }
 
@@ -128,6 +129,9 @@ class Login extends Component {
                         </div>
                     </form>
                 </GridCell>
+
+                {/* Auth Check  */}
+                <AuthCheck />
             </Grid>
         )
     }

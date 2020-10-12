@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes, { func } from 'prop-types'
 import { primary as primaryGradient } from "../../../ui/common/gradients"
 import { level1 } from "../../../ui/common/shadows"
 import { Grid, GridCell } from '../../../ui/grid'
@@ -7,6 +8,9 @@ import Menu from './Menu'
 import MenuItem from './MenuItem'
 import home from '../../../setup/routes/home'
 import user from '../../../setup/routes/user'
+import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
+import topic from '../../../setup/routes/topic'
 
 function Header(props) {
     return (
@@ -35,15 +39,35 @@ function Header(props) {
             </Grid>
 
             <Grid>
-                <GridCell>
-                    <Menu style={{ float: 'right' }}>
-                        <MenuItem to={user.login.path}> Login</MenuItem>
-                        <MenuItem to={user.signup.path}> Signup</MenuItem>
-                    </Menu>
+                <GridCell style={{ flexGrow: 3 }}>
+                    {
+                        props.user.isAuthenticated
+                            ?
+                            <Menu style={{float: 'right'}}>
+                                <MenuItem to={topic.list.path}> Topics</MenuItem>
+                            </Menu>
+                            :
+                            <Menu style={{ float: 'right' }}>
+                                <MenuItem to={user.login.path}> Login</MenuItem>
+                                <MenuItem to={user.signup.path}> Signup</MenuItem>
+                            </Menu>
+                    }
                 </GridCell>
             </Grid>
         </header>
     )
 }
 
-export default Header
+// Header Properties
+Header.propTypes = {
+    user: PropTypes.object.isRequired
+}
+
+// state
+function headerState(state) {
+    return {
+        user: state.user
+    }
+}
+
+export default withRouter(connect(headerState, {})(Header))
