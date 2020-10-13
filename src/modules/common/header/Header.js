@@ -45,6 +45,7 @@ function Header(props) {
                             ?
                             <Menu style={{float: 'right'}}>
                                 <MenuItem to={topic.list.path}> Topics</MenuItem>
+                                <MenuItem to={user.profile.path}> Profile</MenuItem>
                             </Menu>
                             :
                             <Menu style={{ float: 'right' }}>

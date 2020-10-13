@@ -14,6 +14,7 @@ import { withRouter, Link } from 'react-router-dom'
 import { register } from './api/actions'
 import { messageShow, messageHide } from '../common/api/actions'
 import userRoutes from '../../setup/routes/user'
+import AuthCheck from '../auth/AuthCheck'
 
 class Signup extends Component {
     constructor(props) {
@@ -151,6 +152,8 @@ class Signup extends Component {
                         </div>
                     </form>
                 </GridCell>
+                {/* Auth Check  */}
+                <AuthCheck />
             </Grid>
         )
     }
