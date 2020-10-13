@@ -2,6 +2,7 @@ import { combineReducers, createStore, compose, applyMiddleware } from "redux";
 
 import * as blog from '../modules/blog/api/state'
 import * as topic from '../modules/topic/api/state'
+import * as subscription from '../modules/subscription/api/state'
 import common from '../modules/common/api/state'
 import user from '../modules/user/api/state'
 import thunk from "redux-thunk";
@@ -10,7 +11,9 @@ const appReducer = combineReducers({
     common,
     user,
     ...blog,
-    ...topic
+    ...topic,
+    ...subscription
+
 })
 
 export const rootReducer = (state, action) => {

@@ -44,6 +44,7 @@ function Header(props) {
                         props.user.isAuthenticated
                             ?
                             <Menu style={{float: 'right'}}>
+                                <MenuItem to={user.subscriptions.path}> Subscriptions</MenuItem>
                                 <MenuItem to={topic.list.path}> Topics</MenuItem>
                                 <MenuItem to={user.profile.path}> Profile</MenuItem>
                             </Menu>
