@@ -5,9 +5,9 @@ import { Grid, GridCell } from "../../ui/grid";
 import { grey, grey2 } from "../../ui/common/colors";
 import Loading from "../common/Loading";
 import EmptyMessage from "../common/EmptyMessage";
-import { subscription } from "simple-graphql-query-builder";
 import { connect } from "react-redux";
 import { H3 } from "../../ui/typography";
+import SubscriptionItem from '../../modules/subscription/Item'
 
 class Subscriptions extends PureComponent {
 
@@ -38,10 +38,10 @@ class Subscriptions extends PureComponent {
                         {
                             this.props.subscriptions.isLoading
                                 ? <Loading />
-                                : this.props.subscriptions.list.length > 0
+                                : this.props.subscriptions.list && this.props.subscriptions.list.length > 0
                                     ? this.props.subscriptions.list.map(subscription => (
                                         <div key={subscription.id} style={{ margin: '2em', float: 'left' }}>
-                                            {subscription.id}
+                                            <SubscriptionItem subscription={subscription} />
                                         </div>
                                     ))
                                     : <EmptyMessage message="You are not subscribed to any topics yet" />
