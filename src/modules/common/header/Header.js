@@ -11,6 +11,7 @@ import user from '../../../setup/routes/user'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import topic from '../../../setup/routes/topic'
+import admin from '../../../setup/routes/admin'
 
 function Header(props) {
     return (
@@ -44,8 +45,9 @@ function Header(props) {
                         props.user.isAuthenticated
                             ?
                             <Menu style={{float: 'right'}}>
-                                <MenuItem to={user.subscriptions.path}> Subscriptions</MenuItem>
+                                {props.user.details.role === 'ADMIN' && <MenuItem to={admin.dashboard.path} section="admin">Admin</MenuItem>}
                                 <MenuItem to={topic.list.path}> Topics</MenuItem>
+                                <MenuItem to={user.subscriptions.path}> Subscriptions</MenuItem>
                                 <MenuItem to={user.profile.path}> Profile</MenuItem>
                             </Menu>
                             :

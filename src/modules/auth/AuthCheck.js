@@ -4,9 +4,10 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import topic from '../../setup/routes/topic'
+import admin from '../../setup/routes/admin'
 
 const AuthCheck = (props) => (
-    props.user.isAuthenticated ? <Redirect to={topic.list.path}/> : ''
+    props.user.isAuthenticated ? (props.user.details.role === 'ADMIN' ? <Redirect to={admin.dashboard.path}/> : <Redirect to={topic.list.path}/>) : ''
 )
 
 // properties
