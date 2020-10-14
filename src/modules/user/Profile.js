@@ -11,6 +11,8 @@ import { Grid, GridCell } from '../../ui/grid'
 import { grey, grey2 } from '../../ui/common/colors'
 import { H3, H4 } from '../../ui/typography'
 import Button from '../../ui/button'
+import { Link } from 'react-router-dom'
+import userRoutes from '../../setup/routes/user'
 
 const Profile = (props) => (
     <div>
@@ -26,6 +28,10 @@ const Profile = (props) => (
                 <H4 style={{marginBottom: '0.5em'}}>{props.user.details.name}</H4>
 
                 <p style={{ color: grey2 , marginBottom: '2em' }}>{props.user.details.email}</p>
+
+                <Link to={userRoutes.subscriptions.path}>
+                    <Button theme="primary">Subscriptions</Button>
+                </Link>
 
                 <Button theme="secondary" onClick={props.logout} style={{ marginLeft: '1em'}}>Logout</Button>
             </GridCell>
